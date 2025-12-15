@@ -14,20 +14,19 @@
 ## 2. PREPARAÇÃO (Rodar os Serviços)
 **Objetivo:** Subir sua aplicação localmente para conectar na nuvem.
 
-1. **Abra o Terminal 1 (Consumer/Worker):**
-   Rode o comando para iniciar o "ouvinte" que vai processar os e-mails:
+1. **Abra o Terminal 1 (Notificação):**
    ```bash
-   # Confirme o nome do arquivo (ex: consumer.js, worker.js, index.js)
-   node consumer.js
+   node consumers/notification.js
    ```
-2. **Abra o Terminal 2 (API/Producer):**
-    Rode o comando para subir a sua API que recebe o pedido de compra:
+2. **Abra o Terminal 2 (Analytics):**
    ```bash
-    # Confirme o nome do arquivo principal da API
-    node server.js
+    node consumers/analytics.js
    ```
-3. **Abra o Terminal 3 (Cliente):**
-    Vamos fazer a requisição de Checkout simulando um cliente.
+3. **Abra o Terminal 3 (API):**
    ```bash
-    curl -i -X POST http://localhost:3000/lists/1/checkout -H "Content-Type: application/json" -d "{}"
+    node producers/list_api.js
+   ```
+4. **Abra o Terminal 4 (API):**
+   ```bash
+    Invoke-RestMethod -Uri "http://localhost:3000/lists/123/checkout" -Method Post
    ```
